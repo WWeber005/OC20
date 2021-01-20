@@ -4,7 +4,6 @@ l'objectifs de ce repertoire est de démontrer les compétences en programations
 * Un jeu avec pygame
 * Un projet futur
 
+![](img/image_intro.png)
 
 
-<a href="https://github.com/WWeber005/OC20"><img src=".github/OC20/img/image_intro.png"/>
-</a>
