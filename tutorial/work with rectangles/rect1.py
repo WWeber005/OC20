@@ -8,8 +8,7 @@ GRAY = (150, 150, 150)
 pygame.init()
 screen = pygame.display.set_mode(SIZE)
 
-rect = Rect(30, 60, 200, 80)
-rect2 = Rect(10, 20, 20, 30)
+rect = Rect(50, 60, 200, 80)
 print(f'x={rect.x}, y={rect.y}, w={rect.w}, h={rect.h}')
 print(f'left={rect.left}, top={rect.top}, right={rect.right}, bottom={rect.bottom}')
 print(f'center={rect.center}')
@@ -22,7 +21,6 @@ while running:
 
     screen.fill(GRAY)
     pygame.draw.rect(screen, RED, rect)
-    pygame.draw.rect(screen, RED, rect2)
     pygame.display.flip()
 
 pygame.quit()
