@@ -1,9 +1,6 @@
 # Projet en option informatique
-## Programmation en python 
-l'objectifs de ce repertoire est de démontrer les compétences en programations python en créant:
-* Un jeu avec pygame
-* Un projet futur
+## Programmation en python avec le module pygame 
+l'objectifs de ce repertoire est de déposer tout les documents qui ont servit à s'entrainer pour l'utilisation du module pygame
 
-![](img/image_intro.png)
 
 
