@@ -1,5 +1,5 @@
 """Move an image with the mouse."""
-from PIL import Image
+
 import pygame
 from pygame.locals import *
 
