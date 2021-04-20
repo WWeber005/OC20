@@ -13,7 +13,7 @@ notre jeu détient les caractéristiques suivante:
 
 Voici l'inetrface du menu
 
-(mettre une image)
+![](img_readme/Menu.png)
 
 
 ## La partie
@@ -25,14 +25,13 @@ une partie dans notre jeu est décomposé en deux phases:
 
 Voici la phase astéroides:
 
-(mettre une image)
+![](img_readme/phase_astéroide.png)
 
 Voici la phase comètes:
 
-(mettre une image)
+![](img_readme/phase_comet.png)
 
 
 ## Conclusion
 Le jeu que nous avons créé est le fruit de nombreuses heures de travail et de recherche, et le résultat cherché a été obtenu:
 nous avons fait un programme qui remplit l'ensemble des critères d'un jeu vidéo.
-
