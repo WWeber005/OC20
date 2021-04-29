@@ -3,20 +3,34 @@ import random
 from asteroide import*
 from game import *
 # créer une classe pour gérer cette comet
-class Comet(pygame.sprite.Sprite):
+class Spaceship(pygame.sprite.Sprite):
     def __init__(self, comet_event):
         super().__init__()
         # définir quelle est l'image associé
-        self.image_load = pygame.image.load('img/comet/comet1.png')
+        self.image_load = pygame.image.load('img/spaceship/spaceship2-removebg-preview.png')
         self.image = pygame.transform.scale(self.image_load, (120, 120))
         self.rect = self.image.get_rect()
-        self.velocity = random.randint(2, 5)
+        self.velocity = random.randint(1, 3)
         self.rect.x = random.randint(-10, 500)
         self.rect.y = -80
         self.attack = 20
         self.comet_event = comet_event
+        self.direction = random.randint(0, 1)
+        self.health = 100
+        self.max_health = 100
 
+    def update_health_bar_comet(self, surface):
+        # définir une couleur pour notre jauge de vie
+        bar_color = (111, 210, 46)
+        back_bar_color = (60,63,60)
+        #définir la position de notre jauge de vie ainsi que sa largeur et son épaisseur
+        bar_position = [self.rect.x , self.rect.y - 10, self.health, 5]
+        # définir la position de l'arrière plan de la barre de vie
+        back_bar_position = [self.rect.x, self.rect.y - 10, self.max_health, 5]
 
+        #dessiner la barre de vie
+        pygame.draw.rect(surface, back_bar_color, back_bar_position)
+        pygame.draw.rect(surface, bar_color, bar_position)
 
 
     def remove(self):
@@ -32,6 +46,25 @@ class Comet(pygame.sprite.Sprite):
             self.comet_event.game.spawn_asteroide(Med_Asteroide)
             self.comet_event.game.spawn_asteroide(Small_Asteroide)
 
+
+    def move_spaceship(self):
+
+        self.rect.y += self.velocity
+        if self.rect.y == - 20:
+            if self.direction == 1:
+                self.rect.x += self.velocity
+                if self.rect.x >= 0:
+                    self.rect.x -= self.velocity
+                if self.rect.x <= -200:
+                    self.rect.x += self.velocity
+
+            if self.direction == 0:
+                self.rect.x -= self.velocity
+                if self.rect.x >= 0:
+                    self.rect.x -= self.velocity
+                if self.rect.x <= -200:
+
+                    self.rect.x += self.velocity
 
 
     def fall(self):

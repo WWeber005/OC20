@@ -2,7 +2,7 @@
 import pygame
 from player import *
 from asteroide import *
-from comet_event import *
+from Bossfight import *
 from soundmanager import *
 
 
@@ -17,7 +17,7 @@ class Game:
         self.player = Player(self)
         self.all_players.add(self.player)
         # générer l'evenemt de pluie de comet
-        self.comet_event = CometFallEvent(self)
+        self.comet_event = BossEvent(self)
         # définir un groupe de monstre
         self.all_asteroides = pygame.sprite.Group()
         # sound
@@ -83,7 +83,8 @@ class Game:
 
         # récupérer les cometes de notre jeu
         for comet in self.comet_event.all_comets:
-            comet.fall()
+            comet.update_health_bar_comet(screen)
+            comet.move_spaceship()
 
         # appliquer l'ensemble des images de mon groupe de monstre
         self.all_asteroides.draw(screen)
