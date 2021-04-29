@@ -29,6 +29,22 @@ class Projectile(pygame.sprite.Sprite):
             # infliger des dégats
             asteroide.damage((self.player.attack))
 
+    def projectile_enemy(self):
+        self.rect.y += self.velocity
+
+        #verifier si le projectile n'est plus sur l'ecran
+        if self.rect.y < -20:
+            # suprimmer le projectile( en dehors de l'ecran)
+            self.player.all_projectiles.remove(self)
+
+        # vérifier si le projectile rentre en collision avec le joueur
+        for player in self.player.game.check_collision(self, self.player.game.all_asteroides):
+            # supprimer le projectils
+            self.remove()
+            # infliger des dégats
+            player.damage((self.player.attack))
+
+
 
     def remove(self):
         self.player.all_projectiles.remove(self)

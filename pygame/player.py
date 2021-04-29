@@ -1,5 +1,5 @@
 import pygame
-from projecile import *
+from projectile import *
 from soundmanager import *
 # create the class player
 class Player(pygame.sprite.Sprite):

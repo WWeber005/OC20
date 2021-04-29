@@ -1,7 +1,7 @@
 import pygame
-from comet import *
+from spaceship_enemy import *
 # créer une classe pour gérer cet évenement
-class CometFallEvent:
+class Bossfight:
 
     # lors du chargement -> créer un compteur
     def __init__(self, game):
@@ -14,7 +14,7 @@ class CometFallEvent:
         self.all_comets = pygame.sprite.Group()
 
     def add_percentage(self):
-        self.percent += self.percent_speed/100
+        self.percent += self.percent_speed/1
 
     def is_full_loaded(self):
         return self.percent >= 100
@@ -24,11 +24,11 @@ class CometFallEvent:
 
     def meteor_fall(self):
         # apparaitre des boules de feux
-        for i in range(5, 9):
+        for i in range(1, 2):
             self.all_comets.add(Comet(self))
 
     def attempt_fall(self):
-        # la jauge d'evenemt ewst totalement charger
+        # la jauge d'evenemt est totalement charger
         if self.is_full_loaded() and len(self.game.all_asteroides) == 0:
             self.meteor_fall()
             self.fall_mode = True # activer la pluie de comètes

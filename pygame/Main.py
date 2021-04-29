@@ -19,7 +19,7 @@ FPS = 160
 mixer.music.load('music/music.mp3')
 mixer.music.play(-1)
 
-# initialisations e la page
+# initialisations de la page
 pygame.display.set_caption('shooter Game')
 screen = pygame.display.set_mode((800, 800))
 
