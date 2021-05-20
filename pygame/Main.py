@@ -33,14 +33,27 @@ play_button_rect = play_button.get_rect()
 play_button_rect.x = math.ceil(screen.get_width() / 3)
 play_button_rect.y = math.ceil(screen.get_width() / 3)
 # math.ceil permet de rendre un nombre virgule --> un nombre eniter
+settings_button = pygame.image.load('img/Menu/progression (2).png')
+settings_button_rect = settings_button.get_rect()
+settings_button = pygame.transform.scale(settings_button, (200, 200))
+settings_button_rect.x = math.ceil(screen.get_width() / 2.5)
+settings_button_rect.y = math.ceil(screen.get_width() / 1.3)
 
+# importer la bannière
+banner = pygame.image.load('img/bannière/banner.png')
+banner_rect = play_button.get_rect()
+banner_rect.x = math.ceil(screen.get_width() / 12)
+banner_rect.y = math.ceil(screen.get_width() / 10)
 
 # charge Game
 game = Game()
 #charge player
 player = Player(game)
 
+# charger la partie progression
+
 running = True
+
 
 # boucle tant que cette condition est vrai
 while running:
@@ -55,8 +68,10 @@ while running:
 
     # vérifier si notre jeu n'a pas commencé
     else:
-        # ajouter mon ecran de bienvenu
+        # ajouter mon ecran de bienvenue avec le bouton de réglages
         screen.blit(play_button, (play_button_rect.x, play_button_rect.y))
+        screen.blit(settings_button, (settings_button_rect.x, settings_button_rect.y))
+        screen.blit(banner, (banner_rect.x, banner_rect.y))
 
     # update the screen
     pygame.display.flip()
@@ -67,7 +82,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
-            print('Fermeture du jeu')
         # detect if player touches a key
         elif event.type == pygame.KEYDOWN:
             # permet que lorsqu'on appuie sur une touche il rentre dans un dictionnaire et
@@ -90,9 +104,12 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             # vérifier si la souris est sur le boutton de lancement
             if play_button_rect.collidepoint(event.pos):
-                # démarer la partie
-                game.start()
-                game.sound_manager.playsound('click')
+                if game.is_playing == False:
+                    # démarer la partie
+                    game.start()
+                    game.sound_manager.playsound('click')
+            elif settings_button_rect.collidepoint(event.pos):
+                print('hello world')
 
 
     # fixer le nombre de fps sur le jeu

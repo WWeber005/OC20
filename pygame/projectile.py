@@ -1,5 +1,7 @@
 import pygame
-
+from pygame.math import Vector2
+from spaceship_enemy import *
+# définit la classe qui va gérer le projectile de notre jeu
 # définit la classe qui va gérer le projectile de notre jeu
 class Projectile(pygame.sprite.Sprite):
     # définir le constructeur de cettte classe
@@ -29,6 +31,10 @@ class Projectile(pygame.sprite.Sprite):
             # infliger des dégats
             asteroide.damage((self.player.attack))
 
+        for spaceship in self.player.game.check_collision(self, self.player.game.spaceship_event.all_spaceship):
+            self.remove()
+            spaceship.damage((self.player.attack))
+
     def projectile_enemy(self):
         self.rect.y += self.velocity
 
@@ -48,4 +54,5 @@ class Projectile(pygame.sprite.Sprite):
 
     def remove(self):
         self.player.all_projectiles.remove(self)
+
 

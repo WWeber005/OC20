@@ -1,5 +1,6 @@
 import pygame
 from spaceship_enemy import *
+from projectile import *
 # créer une classe pour gérer cet évenement
 class Bossfight:
 
@@ -11,10 +12,12 @@ class Bossfight:
         self.fall_mode = False
 
         # définir un groupe de sprite pour stocker nos cometes
-        self.all_comets = pygame.sprite.Group()
+        self.all_spaceship = pygame.sprite.Group()
+        self.all_projectiles = pygame.sprite.Group()
+
 
     def add_percentage(self):
-        self.percent += self.percent_speed/1
+        self.percent += self.percent_speed/100
 
     def is_full_loaded(self):
         return self.percent >= 100
@@ -22,17 +25,17 @@ class Bossfight:
     def reset_percent(self):
         self.percent = 0
 
-    def meteor_fall(self):
+    def spaceship_spawn(self):
         # apparaitre des boules de feux
-        for i in range(1, 2):
-            self.all_comets.add(Comet(self))
+        number = random.randint(1, 4)
+        for i in range(number):
+            self.all_spaceship.add(Spaceship(self, self.game, self.all_projectiles))
 
     def attempt_fall(self):
         # la jauge d'evenemt est totalement charger
         if self.is_full_loaded() and len(self.game.all_asteroides) == 0:
-            self.meteor_fall()
+            self.spaceship_spawn()
             self.fall_mode = True # activer la pluie de comètes
-
 
 
     def update_bar(self, surface):

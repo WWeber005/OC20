@@ -47,13 +47,12 @@ class Asteroide(pygame.sprite.Sprite):
             self.game.addscore(self.score_value)
 
             # si la barre d'évenement est chargé au maxium
-            if self.game.comet_event.is_full_loaded():
+            if self.game.spaceship_event.is_full_loaded():
                 # retirer les monstre du jeu
                 self.game.all_asteroides.remove(self)
 
                 # appel de la méthode pour essayer de declencher la pluie de cometes
-                self.game.comet_event.attempt_fall()
-
+                self.game.spaceship_event.attempt_fall()
 
 
 

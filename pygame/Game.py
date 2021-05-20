@@ -4,7 +4,7 @@ from player import *
 from asteroide import *
 from Bossfight import *
 from soundmanager import *
-
+from projectile import *
 
 WIDTH, HEIGHT = 800, 800
 # create class Game
@@ -17,8 +17,8 @@ class Game:
         self.player = Player(self)
         self.all_players.add(self.player)
         # générer l'evenemt de pluie de comet
-        self.comet_event = BossEvent(self)
-        # définir un groupe de monstre
+        self.spaceship_event = Bossfight(self)
+        # définir un groupe d'astéroide
         self.all_asteroides = pygame.sprite.Group()
         # sound
         self.sound_manager = Soundmanager()
@@ -28,6 +28,10 @@ class Game:
         self.score = 0
         # créer un attribut qui va enregistrer toute les touche active
         self.pressed = {}
+
+
+
+
 
     def addscore(self, points):
         self.score += points
@@ -45,9 +49,9 @@ class Game:
     def game_over(self):
         # remettre le jeu à neuf, retirer les monstre, remettre le joueur a 100 de vie, jeu en attente
         self.all_asteroides = pygame.sprite.Group()
-        self.comet_event.all_comets = pygame.sprite.Group()
+        self.spaceship_event.all_spaceship = pygame.sprite.Group()
         self.player.health = self.player.max_health
-        self.comet_event.reset_percent()
+        self.spaceship_event.reset_percent()
         # default position
         self.player.rect.x = 250
         self.player.rect.y = 500
@@ -72,19 +76,26 @@ class Game:
         self.player.update_health_bar(screen)
 
         # actualiser la barre d'evenemt du jeu
-        self.comet_event.update_bar(screen)
+        self.spaceship_event.update_bar(screen)
 
         # appliquer l'ensemble desy images de mon groupe de comètes
-        self.comet_event.all_comets.draw(screen)
+        self.spaceship_event.all_spaceship.draw(screen)
+
+        # appliquer l'ensemble des images de mon groupes de projectiles enemis
+        self.spaceship_event.all_projectiles.draw(screen)
 
         # récupérer les projectiles du joeur
         for projectile in self.player.all_projectiles:
             projectile.move()
 
         # récupérer les cometes de notre jeu
-        for comet in self.comet_event.all_comets:
-            comet.update_health_bar_comet(screen)
-            comet.move_spaceship()
+        for spacehip in self.spaceship_event.all_spaceship:
+            spacehip.update_health_bar_comet(screen)
+            spacehip.move_spaceship()
+            spacehip.launch_projectile()
+        for projectile_ennemy in self.spaceship_event.all_projectiles:
+            projectile_ennemy.projectile_enemy()
+
 
         # appliquer l'ensemble des images de mon groupe de monstre
         self.all_asteroides.draw(screen)
@@ -93,6 +104,10 @@ class Game:
         for asteroide in self.all_asteroides:
             asteroide.forward()
             asteroide.update_health_bar(screen)
+
+        # appliquer l'ensemble des images des tirs des vaisseau
+
+
 
         # verifie si le joueur souhaite tourner à gauche, à droite, devant, ou en arrière et aussi vérifie s'il ne dépace
         # pas lécran !!
@@ -104,8 +119,6 @@ class Game:
             self.player.move_back()
         elif self.pressed.get(pygame.K_w) and self.player.rect.y > 0:
             self.player.move_forward()
-
-
 
 
 

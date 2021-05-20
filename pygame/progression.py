@@ -1,0 +1,1 @@
+'''Ce fichier python est pour instancier l'affiachage d'un tableau avec l'ensemble de nos scores.'''
