@@ -5,17 +5,19 @@ from game import *
 from pygame.math import Vector2
 from player import *
 from projectile import *
+from explosion import *
 
 class Projectile_enemy(pygame.sprite.Sprite):
     def __init__(self,game, x, y, vel):
         super().__init__()
         self.velocity = 5
         self.game = game
-        self.image = pygame.image.load('img/shoot/blue_lazer.png')
+        self.image = pygame.image.load('img/shoot/red_lazer.png')
         self.image = pygame.transform.scale(self.image, (60, 80))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel = Vector2(vel)
-        self.attack = 10
+        self.attack = 1
+
 
     def projectile_enemy(self):
 
@@ -56,9 +58,9 @@ class Spaceship(pygame.sprite.Sprite):
         self.direction = random.randint(0, 1)
         # attribut pour lancer plusieurs projectile
         self.previous_time = pygame.time.get_ticks()
-        self.shoot_delay = 2000 # milliseconds
+        self.shoot_delay = random.randint(1500, 5000) # milliseconds
         self.projectiles = projectiles
-        self.limit = random.randint(50, 200)
+        self.limit = random.randint(50, 150 )
 
 
     def update_health_bar_comet(self, surface):
@@ -77,7 +79,6 @@ class Spaceship(pygame.sprite.Sprite):
 
     def remove(self):
         self.spaceship_event.all_spaceship.remove(self)
-
         # vérifier si le nombre de vaisseau est de zéro
         if len(self.spaceship_event.all_spaceship) == 0:
             # remettre la barre a 0
@@ -108,7 +109,9 @@ class Spaceship(pygame.sprite.Sprite):
             self.previous_time = now
             vel = Vector2(5, 0)
             # Add the projectile to the group.
-            self.projectiles.add(Projectile_enemy(self.game, self.rect.x, self.rect.y, vel))
+            self.projectiles.add(Projectile_enemy(self.game, self.rect.x , self.rect.y + 16, vel))
+            self.projectiles.add(Projectile_enemy(self.game, self.rect.x + 52, self.rect.y + 16, vel))
+
 
     def damage(self, amount):
         #  Infliger des dégats
@@ -116,6 +119,8 @@ class Spaceship(pygame.sprite.Sprite):
 
         #vérifier si son nombre de points de vie est inférieur ou égale à zéro
         if self.health <= 0:
+            explosion = Explosion(self.rect.center, 'spaceship')
+            self.game.all_explosions.add(explosion)
             # supprimer et réapparaitre les astéroides
             self.remove()
 

@@ -28,7 +28,7 @@ class Game:
         self.score = 0
         # créer un attribut qui va enregistrer toute les touche active
         self.pressed = {}
-
+        self.all_explosions = pygame.sprite.Group()
 
 
 
@@ -84,6 +84,7 @@ class Game:
         # appliquer l'ensemble des images de mon groupes de projectiles enemis
         self.spaceship_event.all_projectiles.draw(screen)
 
+
         # récupérer les projectiles du joeur
         for projectile in self.player.all_projectiles:
             projectile.move()
@@ -105,8 +106,12 @@ class Game:
             asteroide.forward()
             asteroide.update_health_bar(screen)
 
-        # appliquer l'ensemble des images des tirs des vaisseau
 
+        for explosion in self.all_explosions:
+            explosion.animate()
+
+        self.all_explosions.draw(screen)
+        # appliquer l'ensemble des images de mon groupes d'explosion
 
 
         # verifie si le joueur souhaite tourner à gauche, à droite, devant, ou en arrière et aussi vérifie s'il ne dépace

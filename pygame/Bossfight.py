@@ -26,9 +26,8 @@ class Bossfight:
         self.percent = 0
 
     def spaceship_spawn(self):
-        # apparaitre des boules de feux
-        number = random.randint(1, 4)
-        for i in range(number):
+        # apparaitre des vaisseaux
+        for i in range(1, 5):
             self.all_spaceship.add(Spaceship(self, self.game, self.all_projectiles))
 
     def attempt_fall(self):

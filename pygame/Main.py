@@ -16,8 +16,11 @@ FPS = 160
 
 
 # load music and play
+toggle = False
 mixer.music.load('music/music.mp3')
 mixer.music.play(-1)
+music_paused = False
+
 
 # initialisations de la page
 pygame.display.set_caption('shooter Game')
@@ -33,11 +36,15 @@ play_button_rect = play_button.get_rect()
 play_button_rect.x = math.ceil(screen.get_width() / 3)
 play_button_rect.y = math.ceil(screen.get_width() / 3)
 # math.ceil permet de rendre un nombre virgule --> un nombre eniter
-settings_button = pygame.image.load('img/Menu/progression (2).png')
-settings_button_rect = settings_button.get_rect()
-settings_button = pygame.transform.scale(settings_button, (200, 200))
-settings_button_rect.x = math.ceil(screen.get_width() / 2.5)
-settings_button_rect.y = math.ceil(screen.get_width() / 1.3)
+
+
+# importer et charger le boutton Sound
+sound_button = pygame.image.load('img/Menu/sound.png')
+sound_button = pygame.transform.scale(sound_button, (105, 59))
+sound_button_rect = sound_button.get_rect()
+sound_button_rect.x = 650
+sound_button_rect.y = 100
+
 
 # importer la bannière
 banner = pygame.image.load('img/bannière/banner.png')
@@ -70,12 +77,12 @@ while running:
     else:
         # ajouter mon ecran de bienvenue avec le bouton de réglages
         screen.blit(play_button, (play_button_rect.x, play_button_rect.y))
-        screen.blit(settings_button, (settings_button_rect.x, settings_button_rect.y))
         screen.blit(banner, (banner_rect.x, banner_rect.y))
+        screen.blit(sound_button, (sound_button_rect.x, sound_button_rect.y))
+
 
     # update the screen
     pygame.display.flip()
-
 
     for event in pygame.event.get():
         # exit game
@@ -108,8 +115,15 @@ while running:
                     # démarer la partie
                     game.start()
                     game.sound_manager.playsound('click')
-            elif settings_button_rect.collidepoint(event.pos):
-                print('hello world')
+            elif sound_button_rect.collidepoint(event.pos):
+                game.sound_manager.playsound('click')
+                music_paused = not music_paused
+                if music_paused:
+                    mixer.music.pause()
+                else:
+                    mixer.music.play()
+
+
 
 
     # fixer le nombre de fps sur le jeu

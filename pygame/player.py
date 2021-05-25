@@ -1,6 +1,7 @@
 import pygame
 from projectile import *
 from soundmanager import *
+from explosion import *
 # create the class player
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
@@ -21,6 +22,7 @@ class Player(pygame.sprite.Sprite):
         #default position
         self.rect.x = 250
         self.rect.y = 500
+
 
     def damage(self, amount):
         if self.health - amount > amount:

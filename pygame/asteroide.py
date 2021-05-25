@@ -1,6 +1,6 @@
 import pygame
 import random
-
+from explosion import *
 
 
 # définir la classe qui va gérer les monstres présent dans le jeu
@@ -18,6 +18,7 @@ class Asteroide(pygame.sprite.Sprite):
         self.origin_image = self.image
         self.angle = 0
         self.score_value = score_value
+        self.type = None
 
     def rotation(self):
         # tourner l'asteroide
@@ -38,6 +39,9 @@ class Asteroide(pygame.sprite.Sprite):
         #vérifier si son nombre de points de vie est inférieur ou égale à zéro
 
         if self.health <= 0:
+            # explosion
+            explosion = Explosion(self.rect.center, self.type)
+            self.game.all_explosions.add(explosion)
             # supprimer et réapparaitre le monstre
             self.rect.x = random.randint(-10, 500)
             self.velocity = random.randint(1, self.default_speed)
@@ -101,6 +105,7 @@ class Big_Asteroide(Asteroide):
         self.attack = 0.2
         self.image = pygame.transform.scale(self.image, (150, 120))
         self.set_speed(2)
+        self.type = 'big'
 
 
 
@@ -111,7 +116,7 @@ class Med_Asteroide(Asteroide):
     def __init__(self, game):
         super().__init__(game, 'img/asteroide/meteorBrown_big1.png', 20)
         self.set_speed(4)
-
+        self.type = 'med'
 
 # définir une classe pour l'astéroide petit
 class Small_Asteroide(Asteroide):
@@ -122,6 +127,7 @@ class Small_Asteroide(Asteroide):
         self.max_health = 20
         self.attack = 0.05
         self.set_speed(5)
+        self.type = 'small'
 
 
 
