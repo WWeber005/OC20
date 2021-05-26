@@ -1,5 +1,6 @@
 
 import pygame
+import math
 from player import *
 from asteroide import *
 from Bossfight import *
@@ -29,6 +30,8 @@ class Game:
         # créer un attribut qui va enregistrer toute les touche active
         self.pressed = {}
         self.all_explosions = pygame.sprite.Group()
+        # define is the game is over or not
+        self.is_game_over = False
 
 
 
@@ -56,7 +59,30 @@ class Game:
         self.player.rect.x = 250
         self.player.rect.y = 500
         self.is_playing = False
-        self.score = 0
+        self.is_game_over = True
+
+    def screen_over(self, screen):
+        # bannière game over
+        banner_over = pygame.image.load('img/game_over/game_over.png')
+        banner_rect = banner_over.get_rect()
+        banner_rect.x = math.ceil(screen.get_width() / 5)
+        banner_rect.y = math.ceil(screen.get_width() / 9)
+        screen.blit(banner_over, (banner_rect.x, banner_rect.y))
+        # bannière key escape
+        image_escape = pygame.image.load('img/game_over/key.png')
+        escape_rect = image_escape.get_rect()
+        escape_rect.x = math.ceil(screen.get_width() / 3.3)
+        escape_rect.y = math.ceil(screen.get_width() / 2)
+        screen.blit(image_escape, (escape_rect.x, escape_rect.y))
+        # lives_label = main_font.render(f"Lives: {lives}", 1, (255, 255, 255))
+        score_label = self.main_font.render(f"Score: {self.score}", 1, (255, 255, 255))
+
+        # drawing variables
+        # screen.blit(lives_label, (10, 10))
+        screen.blit(score_label, (WIDTH - score_label.get_width() - 298, 320))
+
+
+
 
     def update(self, screen):
 

@@ -48,7 +48,7 @@ sound_button_rect.y = 100
 
 # importer la bannière
 banner = pygame.image.load('img/bannière/banner.png')
-banner_rect = play_button.get_rect()
+banner_rect = banner.get_rect()
 banner_rect.x = math.ceil(screen.get_width() / 12)
 banner_rect.y = math.ceil(screen.get_width() / 10)
 
@@ -60,7 +60,7 @@ player = Player(game)
 # charger la partie progression
 
 running = True
-
+game_over = False
 
 # boucle tant que cette condition est vrai
 while running:
@@ -72,7 +72,10 @@ while running:
     if game.is_playing is True:
         # declencher les instructions de la partie
         game.update(screen)
-
+    # vérifier si notre jeu est fini ( game_over )
+    elif game.is_game_over:
+        # déclencher les instruction de la fin de partie
+        game.screen_over(screen)
     # vérifier si notre jeu n'a pas commencé
     else:
         # ajouter mon ecran de bienvenue avec le bouton de réglages
@@ -101,6 +104,9 @@ while running:
                 bullet_sound = mixer.Sound('music/lazer.mp3')
                 if game.is_playing:
                     game.player.launch_projectile()
+                elif game.is_game_over:
+                    game.is_game_over = False
+                    game.score = 0
                 else:
                     pass
 
@@ -111,10 +117,11 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             # vérifier si la souris est sur le boutton de lancement
             if play_button_rect.collidepoint(event.pos):
-                if game.is_playing == False:
+                if game.is_playing == False and game.is_game_over == False:
                     # démarer la partie
                     game.start()
                     game.sound_manager.playsound('click')
+
             elif sound_button_rect.collidepoint(event.pos):
                 game.sound_manager.playsound('click')
                 music_paused = not music_paused

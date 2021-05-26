@@ -16,7 +16,7 @@ class Projectile_enemy(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (60, 80))
         self.rect = self.image.get_rect(topleft=(x, y))
         self.vel = Vector2(vel)
-        self.attack = 1
+        self.attack = 8
 
 
     def projectile_enemy(self):
