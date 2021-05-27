@@ -4,7 +4,7 @@ image_anim['big'] = []
 image_anim['med'] = []
 image_anim['small'] = []
 image_anim['spaceship'] = []
-image_anim['player'] = []
+# image_anim['player'] = []
 path = f"img/explosion/regularExplosion0"
 for i in range(9):
     image_path = path + str(i) + '.png'
