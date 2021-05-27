@@ -1,4 +1,4 @@
-# Editor_pygame
+# Game_pygame
 ![](img_readme/readme_bannière.png)
 
 ### Note : notre jeu n'est pas actuellement terminé. Ce readme est temporaire, et présente le jeu dans son état actuel.
