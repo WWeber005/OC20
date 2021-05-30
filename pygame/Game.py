@@ -79,7 +79,7 @@ class Game:
 
         # drawing variables
         # screen.blit(lives_label, (10, 10))
-        screen.blit(score_label, (WIDTH - score_label.get_width() - 298, 320))
+        screen.blit(score_label, (WIDTH - score_label.get_width() - 10, 10))
 
 
 
