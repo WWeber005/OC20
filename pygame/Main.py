@@ -54,8 +54,6 @@ banner_rect.y = math.ceil(screen.get_width() / 10)
 
 # charge Game
 game = Game()
-#charge player
-player = Player(game)
 
 # charger la partie progression
 
