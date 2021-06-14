@@ -121,7 +121,7 @@ class Game:
             spacehip.move_spaceship()
             spacehip.launch_projectile()
         for projectile_ennemy in self.spaceship_event.all_projectiles:
-            projectile_ennemy.projectile_enemy()
+            projectile_ennemy.launch_projectile_enemy()
 
 
         # appliquer l'ensemble des images de mon groupe de monstre

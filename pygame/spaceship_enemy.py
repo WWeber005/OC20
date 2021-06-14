@@ -19,7 +19,7 @@ class Projectile_enemy(pygame.sprite.Sprite):
         self.attack = 8
 
 
-    def projectile_enemy(self):
+    def launch_projectile_enemy(self):
 
         # le déplacement ne se fait que s'il n'y a pas de collision
         if not self.game.check_collision(self, self.game.all_players):
