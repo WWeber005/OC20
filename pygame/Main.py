@@ -102,7 +102,7 @@ while running:
                 bullet_sound = mixer.Sound('music/lazer.mp3')
                 if game.is_playing:
                     game.player.launch_projectile()
-                    if game.score == 1000:
+                    if game.score >= 1000:
                         game.game_over()
                 elif game.is_game_over:
                     game.is_game_over = False

@@ -83,6 +83,7 @@ class Spaceship(pygame.sprite.Sprite):
         if len(self.spaceship_event.all_spaceship) == 0:
             # remettre la barre a 0
             self.spaceship_event.reset_percent()
+
             self.spaceship_event.game.spawn_asteroide(Big_Asteroide)
             self.spaceship_event.game.spawn_asteroide(Big_Asteroide)
             self.spaceship_event.game.spawn_asteroide(Med_Asteroide)
