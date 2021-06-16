@@ -75,3 +75,22 @@ Ci-dessous, vous trouverez le diagramme des classes du projet
 ## Conclusion
 Le jeu que nous avons créé est le fruit de nombreuses heures de travail et de recherche, et le résultat cherché a été obtenu: nous avons fait un programme qui remplit l'ensemble des critères d'un jeu vidéo.
 Nous avons approfondi nos connaissances de Github et des fonctionnements de classes et leurs systèmes d'héritages (superclasses) ainsi que notre efficacité de travail en groupe, dans le cadre de ce projet d'OC.
+
+
+### Sources et inspirations 
+
+Nous avons bien évidemment utilisé quelques sources pour ce projet, étant donné qu'il s'agissait de notre premier projet en Python de cette ampleur, mais en adaptant toutefois les informations trouvées afin qu'elles conviennent à notre projet sans copie directe. En particuliers, nous avons utilisé des vidéos YouTube de "Graven", "Tech with Tim" ainsi que des forums pour les problèmes que nous avons recontré auxquels nous ignorions la solution, tels que StackOverflow, dont voici les liens :
+
+Assets : https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbWJhS2lpXzZfdF9qWHNuZVd3d2VWV3hsU09jZ3xBQ3Jtc0ttNkk4TTlzSEVNTHExQU9tZm5CWGZCZkh5MzY5c2dobjAtZTVUdjdMeVF0c2RuVHFUbVVYOXRyVzIwb0xUMG83SkdfamlZNHJITVJ2V19tNGxNSVY0QlVwNENTZTE5dmtjLXBqVFEtaWp5YmN0WjJyYw&q=https%3A%2F%2Ftechwithtim.net%2Fwp-content%2Fuploads%2F2020%2F04%2Fassets.zip
+
+Graven : https://youtube.com/playlist?list=PLMS9Cy4Enq5KsM7GJ4LHnlBQKTQBV8kaR
+
+Tech with Tim : https://youtu.be/Q-__8Xw9KTM
+
+StackOverflow : https://stackoverflow.com/questions/57960451/how-can-i-play-a-portion-of-an-audio-file-in-a-loop-in-pygame
+
+Police : https://fonts.google.com
+
+Son : https://www.zapsplat.com/sound-effect-category/game-sounds/
+
+
