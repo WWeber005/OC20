@@ -104,7 +104,7 @@ class Game:
         # actualiser la barre d'evenemt du jeu
         self.spaceship_event.update_bar(screen)
 
-        # appliquer l'ensemble desy images de mon groupe de comètes
+        # appliquer l'ensemble desy images de mon groupe de vaisseaux
         self.spaceship_event.all_spaceship.draw(screen)
 
         # appliquer l'ensemble des images de mon groupes de projectiles enemis
@@ -115,11 +115,12 @@ class Game:
         for projectile in self.player.all_projectiles:
             projectile.move()
 
-        # récupérer les cometes de notre jeu
+        # récupérer les vaisseaux de notre jeu
         for spacehip in self.spaceship_event.all_spaceship:
             spacehip.update_health_bar_comet(screen)
             spacehip.move_spaceship()
             spacehip.launch_projectile()
+        # récupérer les projectiles ennemis
         for projectile_ennemy in self.spaceship_event.all_projectiles:
             projectile_ennemy.launch_projectile_enemy()
 
@@ -136,8 +137,9 @@ class Game:
         for explosion in self.all_explosions:
             explosion.animate()
 
-        self.all_explosions.draw(screen)
         # appliquer l'ensemble des images de mon groupes d'explosion
+        self.all_explosions.draw(screen)
+
 
 
         # verifie si le joueur souhaite tourner à gauche, à droite, devant, ou en arrière et aussi vérifie s'il ne dépace
