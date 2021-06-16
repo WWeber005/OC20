@@ -93,4 +93,19 @@ Police : https://fonts.google.com
 
 Son : https://www.zapsplat.com/sound-effect-category/game-sounds/
 
+Images astéroide et explosion: https://github.com/tasdikrahman/spaceShooter/tree/master/spaceshooter/assets
+
+Error concatenate : https://stackoverflow.com/questions/51252580/how-to-resolve-typeerror-can-only-concatenate-str-not-int-to-str
+
+Error interaction in object: https://stackoverflow.com/questions/13407655/getting-an-error-trying-to-create-an-object-in-python
+
+Projectile_ennemi : https://stackoverflow.com/questions/52035565/how-to-make-enemies-fire-periodically-using-pygame-userevent
+                    https://www.youtube.com/watch?v=psaDHhZ0cPs&list=PLMS9Cy4Enq5JmIZtKE5OHJCI3jZfpASbR
+                    https://www.youtube.com/watch?v=PVY46hUp2EM&ab_channel=TechWithTim
+                    
+
+
+
+
+
 
