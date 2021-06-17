@@ -60,7 +60,11 @@ class Game:
         self.player.rect.y = 500
         self.is_playing = False
         self.is_game_over = True
-
+        self.pressed = {}
+        self.all_explosions = pygame.sprite.Group()     
+        self.all_asteroides = pygame.sprite.Group()
+        self.spaceship_event = Bossfight(self)
+         
     def screen_over(self, screen):
         # bannière game over
         banner_over = pygame.image.load('img/game_over/game_over.png')
